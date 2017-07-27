@@ -5,11 +5,12 @@ package com.easy.kotlin
  *
  * lambda f. (lambda x. (f(x x)) lambda x. (f(x x)))
  *
- * OOP YCombinator
  *
  */
 
-
+/**
+ * OOP YCombinator
+ */
 object YCombinatorKt {
 
     fun yCombinator(f: Lambda<Lambda<*>>): Lambda<Lambda<*>> {
@@ -63,6 +64,67 @@ object YCombinatorKt {
         fun call(n: Any): E
     }
 }
+
+//用CoffeeScript实现一个 Y combinator就长这样：
+//coffee> Y = (f) -> ((x) -> (x x)) ((x) -> (f ((y) -> ((x x) y))))
+
+/*
+
+function Y(f) {
+    return (function (g) {
+        return g(g);
+    }) (function (g) {
+        return f(function (x) {
+            return g(g)(x);
+        });
+    });
+}
+
+*/
+
+
+//fun <T> Y(f: (((T) -> T) -> ((T) -> T))): (((T) -> T) -> ((T) -> T)) {
+//    return (fun(g: ((T) -> T) -> ((T) -> T)): ((T) -> T) -> ((T) -> T) {
+//        return { x -> g(g((x))) }
+//    })(fun(g: ((T) -> T) -> ((T) -> T)): (((T) -> T) -> ((T) -> T)) {
+//        return f(fun <T> fn(x: ((T) -> T) -> ((T) -> T)): ((T) -> T) -> ((T) -> T) {
+//            return { p -> g(g(p(x))) }
+//        })
+//    })
+//}
+
+
+//Y(f) = (g => f(g(g))) (g => f(g(g)))
+
+
+
+/**
+ * FP YCombinator
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
